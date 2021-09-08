@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rowsets CachedTime="" DateCreated="2019-09-10T16:38:56" EndDate="2019-09-10T16:38:56" StartDate="2019-09-10T15:38:56" Version="14.0 SP9 Patch 2 (Oct 5, 2017)">
+    <Rowset>
+        <Columns>
+            <Column Description="IdItemOrg" MaxRange="1" MinRange="0" Name="IdItemOrg" SQLDataType="-5" SourceColumn="IdItemOrg"/>
+            <Column Description="IdElemento" MaxRange="1" MinRange="0" Name="IdElemento" SQLDataType="5" SourceColumn="IdElemento"/>
+            <Column Description="CodItem" MaxRange="1" MinRange="0" Name="CodItem" SQLDataType="12" SourceColumn="CodItem"/>
+            <Column Description="ItemNome" MaxRange="1" MinRange="0" Name="ItemNome" SQLDataType="12" SourceColumn="ItemNome"/>
+            <Column Description="CodItemPai" MaxRange="1" MinRange="0" Name="CodItemPai" SQLDataType="-5" SourceColumn="CodItemPai"/>
+            <Column Description="IdItemORgN2" MaxRange="1" MinRange="0" Name="IdItemORgN2" SQLDataType="-5" SourceColumn="IdItemORgN2"/>
+            <Column Description="IdElementoN2" MaxRange="1" MinRange="0" Name="IdElementoN2" SQLDataType="5" SourceColumn="IdElementoN2"/>
+            <Column Description="CodItemN2" MaxRange="1" MinRange="0" Name="CodItemN2" SQLDataType="12" SourceColumn="CodItemN2"/>
+            <Column Description="ItemNomeN2" MaxRange="1" MinRange="0" Name="ItemNomeN2" SQLDataType="12" SourceColumn="ItemNomeN2"/>
+            <Column Description="CodItemPaiN2" MaxRange="1" MinRange="0" Name="CodItemPaiN2" SQLDataType="-5" SourceColumn="CodItemPaiN2"/>
+        </Columns>
+        <Row>
+            <IdItemOrg>3</IdItemOrg>
+            <IdElemento>3</IdElemento>
+            <CodItem>L8RC</CodItem>
+            <ItemNome>LINHA 8</ItemNome>
+            <CodItemPai>2</CodItemPai>
+            <IdItemORgN2>2</IdItemORgN2>
+            <IdElementoN2>2</IdElementoN2>
+            <CodItemN2>WHIRLPOOL SA -</CodItemN2>
+            <ItemNomeN2>RIO CLARO</ItemNomeN2>
+            <CodItemPaiN2>2</CodItemPaiN2>
+        </Row>
+        <Row>
+            <IdItemOrg>3</IdItemOrg>
+            <IdElemento>3</IdElemento>
+            <CodItem>L8RC</CodItem>
+            <ItemNome>LINHA 8</ItemNome>
+            <CodItemPai>2</CodItemPai>
+            <IdItemORgN2>2</IdItemORgN2>
+            <IdElementoN2>2</IdElementoN2>
+            <CodItemN2>WHIRLPOOL SA -</CodItemN2>
+            <ItemNomeN2>RIO CLARO</ItemNomeN2>
+            <CodItemPaiN2>2</CodItemPaiN2>
+        </Row>
+    </Rowset>
+</Rowsets>

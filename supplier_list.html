@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+  <title>uVerify by Stratesys</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/all.css"> -->
+  <link rel="stylesheet" href="./assets/plugins/fontawesome/css/all.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.rowReorder.min.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.responsive.min.css">
+
+  <!-- CSS Libraries -->
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/customStyle.css">
+  <link href="./assets/plugins/sweetalert2/src/sweetalert2.scss">
+  <!-- <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="./assets/plugins/datatables/css/jquery.dataTable.min.css"> -->
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.bootstrap4.min.css">
+
+</head>
+
+<body class="layout-3">
+  <div id="app">
+    <div class="main-wrapper">
+
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <a href="index.html" class="navbar-brand sidebar-gone-hide">U-Verify</a>
+        <ul class="ml-auto navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="./assets/img/avatar/manager.png" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block">Stratesys Innovation</div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-title" data-i18n="header-online-time">Online a 5 minutos</div>
+              <a class="dropdown-item has-icon" style="cursor: pointer;" href="https://partner10.fgvms.com/supplier_list.do?cf=1">
+                <i class="fas fa-box-open" style="cursor: pointer;"></i> SAP FG Provedores
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="./login.html" class="dropdown-item has-icon text-danger" onclick="sair()">
+                <i class="fas fa-sign-out-alt"></i> <span data-i18n="header-exit">Sair</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="navbar navbar-secondary navbar-expand-lg">
+        <div class="container" id="containerMenu">
+          
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+
+        <section class="section">
+         
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 data-i18n="index-table-header"></h4>                  
+
+                </div>
+                <div class="card-body" id="divCardTabelaFornecedor">
+                  <!-- <h6><a href="https://partner10.fgvms.com/supplier_list.do?cf=1">Ver Proveedores en SAP Fieldglass</a></h6>
+                  <br> -->
+                  <div class="table-responsive">
+                    <table class="table table-hover table-bordered bg-light" id="tableListarFornecedor">
+                      <thead>
+                        <tr>
+                          <th data-i18n="index-tb-column-codigo"></th>
+                          <th data-i18n="index-tb-column-name"></th>
+                          <th data-i18n="index-tb-column-status"></th>
+                        </tr>
+                      </thead>
+                      <tbody style="cursor: pointer;">
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2019 <div class="bullet"></div> Construido por <a href="https://www.stratesys-ts.com">Stratesys</a>
+        </div>
+        <div class="footer-right text-primary font-weight-bold">
+          Stratesys &nbsp;&nbsp; u-Verify &copy;
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/query.nicescroll.min.js"></script>
+  <script src="./assets/js/moment.min.js"></script>
+  <script src="./assets/js/stisla.js"></script>
+
+  <script src="./assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.rowReorder.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.responsive.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/dataTables.buttons.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.print.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.html5.min.js"></script>
+
+  <script src="./assets/plugins/sweetalert2/sweetalert2.all.min.js"> </script>
+
+  <!-- JS Libraies -->
+  <script src="./assets/plugins/jquery.i18n/CLDRPluralRuleParser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.messagestore.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.language.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.parser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+
+  <script src="./assets/plugins/jquery-loading-overlay/loadingoverlay.min.js"></script>
+  <script src="./assets/plugins/pacejs/pace.min.js" data-pace-options='{ "ajax": false }'></script>
+
+  <!-- Template JS File -->
+  <script src="./assets/js/scripts.js"></script>
+
+  <!-- Page Specific JS File -->
+
+  <script src="./controllers/commons.js"></script>
+  <script src="./controllers/listar_fornecedores.js"></script>
+
+  <!-- Page Router JS File -->
+  <!-- <script src="./assets/js/router.js"></script> -->
+</body>
+
+</html>

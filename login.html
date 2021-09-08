@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+  <title>Login &mdash; UVerify</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/all.css"> -->
+  <link rel="stylesheet" href="./assets/plugins/fontawesome/css/all.css">
+
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="./assets/plugins/bootstrap-social/bootstrap-social.css">
+  <link href="./assets/plugins/sweetalert2/src/sweetalert2.scss">
+  <link rel="stylesheet" href="./assets/plugins/flag-icon-css/css/flag-icon.css"">
+  <link rel=" stylesheet" href="./assets/plugins/bootstrap-select/dist/css/bootstrap-select.css">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+</head>
+
+<body>
+  <div id="app">
+    <section class="section">
+      <div class="d-flex flex-wrap align-items-stretch">
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
+          <div class="p-4 m-3">
+            <img src="./assets/img/stratesys.png" alt="logo" width="120" class="mb-5 mt-2">
+            <h4 class="text-dark font-weight-normal" data-i18n="login-welcome">Bem Vindo ao u-Verify</h4>
+            <p class="text-muted"></p>
+            <form id="login_form" class="needs-validation" novalidate="">
+              <div class="form-group">
+                <label for="email" data-i18n="login-username">Usuário</label>
+                <input type="text" class="form-control" id="inputEmail" name="user" tabindex="1" required autofocus>
+                <div class="invalid-feedback" data-i18n="login-wrong-user">
+                  Por Favor insira seu usuário
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="d-block">
+                  <label for="password" class="control-label" data-i18n="login-password">Senha</label>
+                </div>
+                <input type="password" class="form-control" id="inputSenha" name="password" tabindex="2" required>
+                <div class="invalid-feedback" data-i18n="login-wrong-pass">
+                  Por favor insira sua senha
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="d-block">
+                  <label for="password" class="control-label" data-i18n="login-language">Idioma</label>
+                </div>
+                <select class="selectpicker" data-width="fit" id="dplLanguage">
+                  <option data-content='<span class="flag-icon flag-icon-br"></span> Português BR' value="ptbr">Português BR</option>
+                  <option data-content='<span class="flag-icon flag-icon-us"></span> English' value="en">English</option>
+                  <option data-content='<span class="flag-icon flag-icon-es"></span> Español' value="es">Español</option>
+                  <option data-content='<span class="flag-icon flag-icon-mx"></span> Español' value="mx">Español MX</option>
+                </select>
+
+              </div>
+
+              <!-- <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                  <label class="custom-control-label" for="remember-me" data-i18n="login-remember">Lembrar-me</label>
+                </div>
+              </div> -->
+
+
+              <div class="form-group text-right">
+                <a href="#" class="float-left mt-3" hidden>
+                  Forgot Password?
+                </a>
+                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
+                  Login
+                </button>
+              </div>
+
+              <!-- <div class="mt-5 text-center">
+                Don't have an account? <a href="#">Create new one</a>
+              </div> -->
+            </form>
+
+            <div class="text-center mt-5 text-small">
+              Copyright &copy; UVerify. Made by Stratesys
+              <div class="mt-2">
+                <a href="#">Privacy Policy</a>
+                <div class="bullet"></div>
+                <a href="#">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="./assets/img/avpaulista1.jpg">
+          <div class="absolute-bottom-left index-2">
+            <div class="text-light p-5 pb-2">
+              <div class="mb-5 pb-3">
+                <h1 class="mb-2 display-4 font-weight-bold">Stratesys </h1>
+                <h5 class="font-weight-normal text-muted-transparent">São Paulo, Brazil</h5>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="./assets/js/jquery-3.3.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/jquery.nicescroll.min.js"></script>
+  <script src="./assets/js/moment.min.js"></script>
+  <script src="./assets/plugins/sweetalert2/sweetalert2.all.min.js"> </script>
+  <script src="./assets/js/stisla.js"></script>
+
+  <!-- JS Libraies -->
+
+  <!-- Template JS File -->
+  <script src="./assets/js/scripts.js"></script>
+  <script src="./assets/js/custom.js"></script>
+
+
+  <script src="./assets/plugins/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+  <script src="./assets/plugins/jquery.i18n/CLDRPluralRuleParser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.messagestore.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.language.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.parser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+
+  <script src="./controllers/globals.js"></script>
+  <script src="./controllers/login.js"></script>
+  <!-- Page Specific JS File -->
+</body>
+
+</html>

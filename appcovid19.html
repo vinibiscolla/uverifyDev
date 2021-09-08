@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+  <title>App-Covid19 Stratesys</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/all.css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <!-- CSS Libraries -->
+  <!-- Template CSS -->
+  <!-- <link rel="stylesheet" href="./assets/plugins/horizontal-timeline/assets/css/style.css"> -->
+  <link rel="stylesheet" href="./assets/css/modal_wizard.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/customStyle.css">
+  <link href="./assets/plugins/sweetalert2/src/sweetalert2.scss">
+  <link rel="stylesheet" href="./assets/plugins/iCheck/square/_all.css">
+  <link rel="stylesheet" href="./assets/plugins/iCheck/square/green.css">
+  <link rel="stylesheet" href="./assets/plugins/vue-qrcode-reader/vue-qrcode-reader.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="./assets/plugins/fancybox/dist/jquery.fancybox.min.css">
+
+</head>
+
+<body class="sidebar-mini">
+  <div id="app">
+    <div class="main-wrapper">
+
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <!-- <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li> -->
+          </ul>
+        </form>
+        <ul class="ml-auto navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="./assets/img/avatar/manager.png" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block"></div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-title" data-i18n="header-online-time">uverify</div>
+              <div class="dropdown-divider"></div>
+              <a href="./login.html" class="dropdown-item has-icon text-danger" onclick="sair()">
+                <i class="fas fa-sign-out-alt"></i> <span data-i18n="header-exit">Sair</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">u-Verify</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index.html">UV</a>
+          </div>
+          <div class="mb-4 text-center">
+            <figure class="avatar mr-1 ml-1" style="background: #fff;">
+              <img src="./assets/img/avatar/manager.png" alt="...">
+              <i class="avatar-presence online"></i>
+              <!-- <p class="text-primary font-weight-bold">Stratesys</p> -->
+            </figure>
+          </div>
+
+          <ul class="sidebar-menu text-bold-black" id="menuMain">
+
+          </ul>
+
+          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+            <!-- <a href="index.html" class="btn btn-primary btn-lg btn-block btn-icon-split">
+              <i class="fas fa-rocket"></i> Template
+            </a> -->
+          </div>
+        </aside>
+      </div>
+
+      <div class="main-content">
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card author-box">
+                <div class="card-header txt-black">
+                  <h6 data-i18n="covid-func-profile">Perfil Funcionário</h6>
+                </div>
+                <div class="card-body" id="cardBodyPerfilFuncionario" hidden>
+                  <div class="author-box-left">
+                    <img alt="image" class="author-box-picture" style="float: left;" id="imgFuncionario">
+                    <div class="clearfix mt-2">
+                    </div>
+                  </div>
+                  <div class="author-box-details">
+                    <div class="author-box-name">
+                      <div class="row">
+                        <div class="col-12 text-left">
+                          <ul class="txt-black" style="list-style-type: none; padding-left: 0px">
+                            <li><b data-i18n="covid-func-name">Nome:</b> <a class="txt-black" id="nomeFuncionario"> </a></li>
+                            <li><b data-i18n="covid-func-id">Id:</b> <a class="text-black" id="idFuncionario"> </a> </li>
+                            <li><b data-i18n="covid-func-cargo">Cargo:</b> <a class="text-black" id="cargoFuncionario"> </a></li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="card">
+                    <br>
+                    <div class="car-body">
+                      <div class="card card-statistic-1 mb-1">
+                        <div class="card-icon bg-secondary cardStatColor">
+                          <!-- <i id="iconThermometer" class="fa fa-thermometer-quarter fa-2x text-white"></i> -->
+                        </div>
+                        <div class="card-wrap">
+                          <div class="card-header">
+                            <h4 class="font-weight-bold" data-i18n="covid-temp-sensor">Temperatura Sensor</h4>
+                          </div>
+                          <div class="card-body">
+                            <span class="mb-0 mt-0 spanTemperatura"><b> 0 </b></span> <span> °C</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label class="txt-16" data-i18n="covid-label-sensor">Favor posicionar sua mão sobre o sensor para realizar medição da temperatura </label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-thermometer-empty"></i>
+                        </div>
+                      </div>
+                      <input type="text" id="inputMedirTemperatura" class="form-control txt-16 txt-black">
+                    </div>
+
+                    <br>
+                    <button type="button" class="btn btn-info text-white" id="btnMedirTemperatura"><span data-i18n="covid-btn-medir-temp">Medir Temperatura </span> &nbsp;<i class="fa fa-thermometer"></i></button>
+                    <!-- <button type="button" class="btn btn-success text-white" id="btnApontarTemperatura" disabled><span data-i18n="covid-btn-apontar-temp">Apontar Temperatura </span> &nbsp;<i class="fa fa-check"></i></button> -->
+                  </div>
+                  <br>
+                  <div class="tab-content" id="tab1" style="text-align: center;">
+                    <h6 class="txt-16 txt-black"><b data-i18n="covid-modal-question">Como está sua saúde nesse momento ?</b></h6>
+                    <div class="tab-pane fade ml-2 active show" id="medir_temperatura" role="tabpanel" aria-labelledby="home-tab3">
+                      <button type="button" class="btn btn-success" id="btnBem" data-toggle="modal" data-target="#modalStatusBom"><i class="fa fa-smile"></i> <span data-i18n="covid-modal-bem"> Bem </span> </button>
+                      <button type="button" class="btn btn-danger" id="btnMal" data-toggle="modal" data-target="#modalStatusMal"><i class="fa fa-frown"></i> <span data-i18n="covid-modal-mal"> Mal </span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Carta de Recomendação</h4>
+                </div>
+                <div class="card-body" id="cardRecomendacao" hidden>
+                  <a data-fancybox="gallery" href="./docs/CartaCovid.png">
+                    <img class="author-box-picture mr-3" width="200" src="./docs/CartaCovid.png">
+                  </a>
+                  <br>
+                  <a href="./docs/carta_protocolo_covid.pdf" target="_blank">
+                    Ver PDF <i class="fa fa-lg fa-file-pdf"> </i>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Informações e Comunicados</h4>
+                </div>
+                <div class="card-body" id="cardPortaria" hidden>
+
+                  <ul>
+                    <li><a href="http://www.in.gov.br/en/web/dou/-/portaria-conjunta-n-20-de-18-de-junho-de-2020-262408085" target="_blank">
+                        Comunicado da Portaria da União
+                      </a> <i class="fa fa-link"></i></li>
+                  </ul>
+
+
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Upload Teste Covid-19</h4>
+                </div>
+                <div class="card-body" id="cardUpload" hidden>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="covidUpload" onchange="encodeImgtoBase64(this)" required>
+                          <label class="custom-file-label" for="covidUpload">Anexar Test Covid</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label>Teste Covid a ser analisado</label>
+                        <br>
+                        <a data-fancybox="gallery" id="fancyBox" href="">
+                          <img src="" alt="" name="displayImagem" id="displayImg" width="200">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+
+                    <button type="submit" class="btn btn-info ml-3" id="btnSubmit" onclick="enviarDocAnalise()" disabled> Analisar <i class="fa fa-file-upload"></i></button>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="tab-pane fade ml-2 active show" id="analise_doc" role="tabpanel" aria-labelledby="contact-tab4">
+                        <ul class="list-unstyled" id="listaAnalises" style="list-style-type: none">
+
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade ml-2" id="dados_doc" role="tabpanel">
+                        <p class="txt-16 txt-black">Dados documento</p>
+                        <ul class="mt-3 txt-16 txt-black" style="list-style-type: none; padding-left: 5px" id="dadosDoc">
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h6 class="txt-black">Histórico de medição</h6>
+                </div>
+                <div class="card-body">
+
+                  <div class="table-responsive">
+                    <table id="tabela_covid" class="table table-hover" data-name="cool-table">
+                      <thead>
+                        <tr>
+                          <th data-i18n="covid-tb-dia">Dia</th>
+                          <th data-i18n="covid-tb-local">Local</th>
+                          <th data-i18n="covid-tb-hr-inicio">Hr Inicio</th>
+                          <th data-i18n="covid-tb-medicao1">Medição</th>
+                          <th data-i18n="covid-tb-hr-fim">Hr Fim</th>
+                          <th data-i18n="covid-tb-medicao2">Medição</th>
+                          <th data-i18n="covid-tb-status">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>06/11/20</td>
+                          <td data-i18n="covid-tb-internal">Interno</td>
+                          <td>08:06</td>
+                          <td>34,5° C</td>
+                          <td>17:09</td>
+                          <td>34,7° C</td>
+                          <td><span class="badge badge-success"> OK </span></td>
+                        </tr>
+                        <tr>
+                          <td>09/11/20</td>
+                          <td>Interno</td>
+                          <td>08:06</td>
+                          <td>34,5° C</td>
+                          <td>17:09</td>
+                          <td>34,7° C</td>
+                          <td><span class="badge badge-success"> OK </span></td>
+                        </tr>
+                        <tr>
+                          <td>10/10/20</td>
+                          <td>Interno</td>
+                          <td>08:06</td>
+                          <td>34,5° C</td>
+                          <td>17:09</td>
+                          <td>34,7° C</td>
+                          <td><span class="badge badge-success"> OK </span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2019 <div class="bullet"></div> Construido por <a href="https://www.stratesys-ts.com">Stratesys</a>
+        </div>
+        <div class="footer-right text-primary font-weight-bold">
+          Stratesys &nbsp;&nbsp; u-Verify &copy;
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-lg" id="modalStatusBom" tabindex="-1" role="dialog" aria-labelledby="modalBem" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog  modal-lg" role="document" style="max-width: 980px !important;">
+      <div class="modal-content table-responsive">
+        <div class="modal-header bg-success">
+          <h4 class="modal-title text-white"><span data-i18n="covid-modal-bem-head">Bem </span>&nbsp;<i class="fa fa-smile"></i></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <div class="col-12 mb-4">
+                <div class="hero bg-success text-white">
+                  <div class="hero-inner">
+                    <h2>Pasaporte Liberado &nbsp; <i class="fa fa-lg fa-check-circle"></i> &nbsp; </h2>
+                    <h6 data-i18n="covid-modal-header-good">Ótimo, Obrigado por contribuir.</h6>
+                    <ul>
+                      <li><span data-i18n="covid-modal-header-ul-li-1">Laves as mãos frequentemente com água e sabão, ou higienize com álcool gel 70% </span></li>
+                      <li><span data-i18n="covid-modal-header-ul-li-2">Cubra a boca e nariz com um lenço de papel ao tossir e espirrar jogue no lixo após o uso, ou proteja com o antebraço (nunca com as mãos). </span></li>
+                      <li><span data-i18n="covid-modal-header-ul-li-3">Evite locais com aglomeração de pessoas. </span></li>
+                      <li><span data-i18n="covid-modal-header-ul-li-4">Não compartilhe objetos de uso pessoal. </span></li>
+                    </ul>
+                    <h6 data-i18n="covid-modal-good-question">Em caso de dúvidas, ligue para o Disque Saúde 136 do Ministério da Saúde, ou procure uma unidade de saúde.</h6>
+                    <div class="alert alert-light">
+                      <div class="alert-title text-center">Entrada Permitida</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-i18n="covid-modal-btn-close">Fechar</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-lg" id="modalStatusMal" tabindex="-1" role="dialog" aria-labelledby="modalMal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h4 class="modal-title text-white"><span data-i18n="covid-modal-mal">Mal</span> &nbsp;<i class="fa fa-frown"></i></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- <h4 data-i18n="covid-modal-bad-avaliation">Faça uma autoavaliação do seu estado de saúde.</h4> -->
+
+              <div class="wizard">
+                <div class="wizard-inner">
+                  <div class="connecting-line"></div>
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                      <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab"><span class="round-tab">1 </span></a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                      <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab"><span class="round-tab">2</span> </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                      <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                      <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> </a>
+                    </li>
+                  </ul>
+                </div>
+                <form role="form" id="form_covid" class="login-box">
+                  <div class="tab-content" id="main_form">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                      <h4 class="text-center"><span data-i18n="c19-step-1">Passo 1</span></h4>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="form-label txt-16 txt-black" data-i18n="covid-sintomas">Qual Sintomas está sentindo ?</label>
+                            <div class="selectgroup selectgroup-pills">
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueSintomas" value="respirar" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sintomas-dif-respirar">Dificuldade de respirar</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueSintomas" value="dorGarganta" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sintomas-dor-garganta">Dor de Garganta</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueSintomas" value="febre" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sintomas-febre">Febre</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueSintomas" value="tosse" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sintomas-tosse">Tosse</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueSintomas" value="nds" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sintomas-nds">Nenhum desses sintomas</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label txt-16 txt-black" data-i18n="covid-quanto-tempo">Há quanto tempo sente esse(s) sintoma(s)</label>
+                            <div class="selectgroup selectgroup-pills">
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueDias" value="hoje" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-tempo-hoje">Hoje</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueDias" value="1a7dias" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-tempo-1-7">1 a 7 Dias</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueDias" value="8a14dias" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-tempo-8-14">8 a 14 Dias</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueDias" value="mais14dias" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-tempo-mais-14">Mais de 14 Dias</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <ul class="list-inline pull-right">
+                        <li><button type="button" class="default-btn next-step text-white"><span data-i18n="c19-next">Próximo</span></button></li>
+                      </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                      <h4 class="text-center"><span data-i18n="c19-step-2">Passo 2</span></h4>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="form-label txt-16 txt-black"><span data-i18n="c19-idade">Qual é a sua idade ?</span></label>
+                            <div class="selectgroup selectgroup-pills">
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueIdade" value="menor18" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-menor-18">Menor de 18 anos</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueIdade" value="18a39anos" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-18-a-39">18 a 39 anos</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueIdade" value="40a59anos" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-40-a-59">40 a 59 anos</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueIdade" value="mais60" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-mais-60">Mais de 60 Anos</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label txt-16 txt-black" data-i18n="c19-modal-sexo">Qual é o seu sexo ?</label>
+                            <div class="selectgroup selectgroup-pills">
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueSexo" value="masculino" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sexo-masculino">Masculino</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="valueSexo" value="feminino" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-sexo-feminino">Feminino</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <ul class="list-inline pull-right">
+                        <li><button type="button" class="default-btn prev-step text-white"><span data-i18n="c19-prev">Voltar</span></button></li>
+                        <li><button type="button" class="default-btn next-step text-white"><span data-i18n="c19-next">Próximo</span></button></li>
+                      </ul>
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                      <h4 class="text-center">Passo 3</h4>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="form-label txt-16 txt-black" data-i18n="c19-outras-doencas">Possui alguma dessas doenças ?</label>
+                            <div class="selectgroup selectgroup-pills">
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueDoencas" value="diabetes" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-od-diabetes">Diabetes</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueDoencas" value="doencaCardio" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-od-cardio">Doença Cardíaca</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueDoencas" value="doencaRenalCronica" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-od-renal">Doença Renal Crônica</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueDoencas" value="doencaRespiratoriaCronica" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-od-respiratoria">Doença Respiratória Crônica</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueDoencas" value="pressaoAlta" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-od-pressao-alta">Pressão Alta</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="valueDoencas" value="naoPossuo" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-od-np">Não Possuo</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label txt-16 txt-black" data-i18n="c19-modal-oss">Outros Sinais e/ou sintomas ?</label>
+                            <div class="selectgroup selectgroup-pills">
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="outrosSintomas" value="bocaRoxa" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-oss-boca">Boca ou ponta dos dedos roxa</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="outrosSintomas" value="palidez" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-oss-palidez">Palidez</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="outrosSintomas" value="pressaoBaixa" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-oss-pressao">Pressão Baixa</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="outrosSintomas" value="respirandoRapido" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-oss-resp-rapido">Respirando Muito Rápido</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="outrosSintomas" value="sensacaoDesmaio" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-oss-desmaio">Sensação de Desmaio</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="checkbox" name="outrosSintomas" value="nenhumDessesSintomas" class="selectgroup-input">
+                                <span class="selectgroup-button" data-i18n="c19-oss-nds">Nenhum Desses Sintomas</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <ul class="list-inline pull-right">
+                        <li><button type="button" class="default-btn prev-step text-white"><span data-i18n="c19-prev">Voltar</span></button></li>
+                        <li><button type="button" class="default-btn next-step text-white"><span data-i18n="c19-next">Próximo</span></button></li>
+                      </ul>
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="step4">
+                      <div class="col-12 mb-4">
+                        <div class="hero bg-danger text-white">
+                          <div class="hero-inner">
+                            <h2>Pasaporte Negado &nbsp; <i class="fa fa-lg fa-exclamation-triangle"></i> &nbsp; <img src="./assets/img/virus.svg" height="40px" width="40px" alt=""></h2>
+                            <p class="lead">Caso sospechoso de covid-19.</p>
+                            <p>Según sus respuestas, es probable que esta situación se ajuste como un caso sospechoso de enfermedad por coronavirus 2019 (Covid-19).</p>
+                            <p>El consejo es que busque ayuda en el servicio de emergencia más cercano para evaluación clínica o llame a servicio de salude.</p>
+                            <br>
+                            <h6 data-i18n="c19-modal-diag-result">Resultado do diagnostico</h6>
+                            <p data-i18n="c19-modal-step-4-1">Si elige ir a un servicio de emergencia, siga las siguientes medidas de protección personal y etiqueta respiratoria.</p>
+                            <ul>
+                              <li>Elija tener un acompañante que lo ayude a viajar al servicio de emergencia. El acompañante debe usar una máscara facial y lavarse las manos constantemente con agua y jabón o alcohol en gel.</li>
+                              <li>Busque el servicio de inmediato, no se desvíe de los caminos y evite el transporte público.</li>
+                              <li>Use una máscara facial para evitar la transmisión de otras personas camino a la sala de emergencias.</li>
+                              <li>Lávese las manos frecuentemente con agua y jabón o higiene con gel de alcohol al 70%</li>
+                              <li>Cúbrase la boca y la nariz con un pañuelo desechable al toser o estornudar y tírelo a la basura después de usarlo, o protéjalo con el antebrazo (nunca con las manos).</li>
+                              <li>Evite lugares con multitudes de personas. No comparta artículos personales.</li>
+                            </ul>
+                            <div class="alert alert-light">
+                              <div class="alert-title text-center">Entrada Negada &nbsp; <i class="fa fa-times-circle"></i></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <p><button type="button" class="btn btn-primary" onclick="criaDocFormulario()">Gerar Documento <i class="fa fa-file-pdf"></i></button></p> -->
+                      <!-- <h6 data-i18n="c19-modal-step-4-6">Em caso de dúvidas, ligue para o Disque Saúde 136 do Ministério da Saúde, ou procure uma unidade de saúde.</h6> -->
+
+                      <ul class="list-inline pull-right">
+                        <li><button type="button" class="default-btn prev-step text-white" data-i18n="c19-modal-btn-voltar">Voltar</button></li>
+                        <li><button type="submit" class="default-btn next-step text-white" data-i18n="c19-modal-btn-apontar">Finalizar</button></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-i18n="covid-modal-fechar">Fechar</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-lg" id="modalIdentificacao" tabindex="-1" role="dialog" aria-labelledby="modalMal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content" style="height:600px;">
+        <div class="modal-header bg-info">
+          <h4 class="modal-title text-white"><span data-i18n="appcovid19-modal-identificacao-header">Identifique-se</span> &nbsp;<i class="fa fa-id-badge"></i></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <br>
+          <form id="pesquisar_form" class="needs-validation">
+            <div class="form-group">
+              <label class="txt-16" data-i18n="covid-identifica-txt"> Por favor digite seu nome, registro ou CPF </label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-id-card"></i>
+                  </div>
+                </div>
+                <input type="text" id="inputRegistroUsuario" class="form-control" name="user" tabindex="1" required autofocus placeholder="Please fill your ID or name and then hit search" autocomplete="off">
+                <div class="invalid-feedback">
+                  <span data-i18n="covid-valid-input">Por Favor insira um registro valido</span>
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-info text-white" id="btnPesquisar" disabled><span data-i18n="covid-search">Procurar</span> <i class="fa fa-search"></i></button>
+              <button type="button mt-2" class="btn btn-info" id="btnIdentificar" disabled> <span data-i18n="covid-identificar">Identificar</span> <i class="fa fa-camera"></i></button>
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><span data-i18n="covid-modal-fechar">Fechar</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- General JS Scripts -->
+  <script src="./assets/js/jquery-3.3.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/jquery.nicescroll.min.js"></script>
+  <script src="./assets/js/moment.min.js"></script>
+  <script src="./assets/js/stisla.js"></script>
+
+  <!-- JS Libraies -->
+  <script src="./assets/plugins/sweetalert2/sweetalert2.all.min.js"> </script>
+
+  <script src="./assets/plugins/jquery-ui-dist/jquery-ui.min.js"></script>
+
+  <script src="./assets/plugins/iCheck/icheck.js"></script>
+  <script src="./assets/plugins/horizontal-timeline/assets/js/util.js"></script>
+  <script src="./assets/plugins/horizontal-timeline/assets/js/swipe-content.js"></script>
+  <script src="./assets/plugins/horizontal-timeline/assets/js/main.js"></script>
+
+  <script src="./assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/dataTables.buttons.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.print.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.html5.min.js"></script>
+
+  <script src="./assets/plugins/jquery.i18n/CLDRPluralRuleParser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.messagestore.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.language.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.parser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+
+  <script src="./assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+  <script src="./assets/js/modal_wizard.js"></script>
+  <script src="./assets/plugins/jspdf/jspdf.js"></script>
+
+
+  <!-- Template JS File -->
+  <script src="./assets/js/scripts.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="./controllers/commons.js"></script>
+  <script src="./controllers/appcovid19.js"></script>
+  <!-- Page Router JS File -->
+  <!-- <script src="./assets/js/router.js"></script> -->
+
+</body>
+
+</html>

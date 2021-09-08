@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+  <title>uVerify by Stratesys</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/all.css"> -->
+  <link rel="stylesheet" href="./assets/plugins/fontawesome/css/all.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.rowReorder.min.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.responsive.min.css">
+
+  <!-- CSS Libraries -->
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+
+  <link rel="stylesheet" href="./assets/css/customStyle.css">
+  <link rel="stylesheet" href="./assets/plugins/sweetalert2/src/sweetalert2.scss">
+  <link rel="stylesheet" href="./assets/plugins/pacejs/pace-loading.css">
+  <link rel="stylesheet" href="./assets/css/highcharts.css">
+</head>
+
+<body class="layout-3">
+  <div id="app">
+    <div class="main-wrapper">
+
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <a href="index.html" class="navbar-brand sidebar-gone-hide">U-Verify</a>
+        <ul class="ml-auto navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="./assets/img/avatar/manager.png" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block"></div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">              
+              <a class="dropdown-item has-icon" style="cursor: pointer;" href="https://partner10.fgvms.com/desktop.do?cf=1">
+                <img alt="image" src="./assets/img/SAPFieldglassLogo.png" width="130px" class="img-responsive mr-1">
+              </a>
+              <div class="dropdown-divider"></div> 
+              <a class="dropdown-item has-icon" style="cursor: pointer;" onclick="sair()">
+                <i class="fas fa-sign-out-alt" style="cursor: pointer;"></i> Cerrar sesión
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="navbar navbar-secondary navbar-expand-lg">
+        <div class="container" id="containerMenu">
+          
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+
+        <section class="section">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-primary">
+                      <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Proveedores totales</h4>
+                      </div>
+                      <div class="card-body">
+                        104
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-success">
+                      <i class="fas fa-users-cog"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Trabajadores totales</h4>
+                      </div>
+                      <div class="card-body">
+                        305
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-info">
+                      <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Documentos totales</h4>
+                      </div>
+                      <div class="card-body">
+                        501
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-danger">
+                      <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Documentos inválidos</h4>
+                      </div>
+                      <div class="card-body">
+                        57
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Documentos de trabajador - Gráfico circular</h4>
+
+                    </div>
+                    <div class="card-body">
+                      <figure class="highcharts-figure">
+                        <div id="workerChartContainer"></div>
+                        <p class="highcharts-description">
+                            
+                        </p>
+                    </figure>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Documentos del proveedor - Gráfico circular</h4>
+
+                    </div>
+                    <div class="card-body">
+                      <figure class="highcharts-figure">
+                        <div id="supplierChartContainer"></div>
+                        <p class="highcharts-description">
+                            
+                        </p>
+                    </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                
+                <div class="col-lg-6 col-md-6 col-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="d-inline">Documentos críticos para el trabajador</h4>
+                      <!-- <div class="card-header-action">
+                        <a href="#" class="btn btn-primary">View All</a>
+                      </div> -->
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled list-unstyled-border">
+                        <li class="media">
+                          <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png" alt="avatar">
+                          <div class="media-body">
+                            <div class="badge badge-pill badge-danger mb-1 float-right">Inválido</div>
+                            <h6 class="media-title"><a href="#">DNI - Caducado</a></h6>
+                            <div class="text-small text-muted">Gustavo Quinloñes <div class="bullet"></div> <span class="text-primary">Last Week</span></div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png" alt="avatar">
+                          <div class="media-body">
+                            <div class="badge badge-pill badge-danger mb-1 float-right">Inválido</div>
+                            <h6 class="media-title"><a href="#">DNI - Nombre inválido</a></h6>
+                            <div class="text-small text-muted">Raphael Lopes <div class="bullet"></div> 1 day ago</div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png" alt="avatar">
+                          <div class="media-body">
+                            <div class="badge badge-pill badge-danger mb-1 float-right">Inválido</div>
+                            <h6 class="media-title"><a href="#">Pasaporte - Caducado</a></h6>
+                            <div class="text-small text-muted">Ruy Gutierrez <div class="bullet"></div> 3 days ago</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="d-inline">Documentos críticos del proveedor</h4>
+                      <!-- <div class="card-header-action">
+                        <a href="#" class="btn btn-primary">View All</a>
+                      </div> -->
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled list-unstyled-border">
+                        <li class="media">
+                          <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png" alt="avatar">
+                          <div class="media-body">
+                            <div class="badge badge-pill badge-danger mb-1 float-right">Inválido</div>
+                            <h6 class="media-title"><a href="#">ISO 9001 - Caducado</a></h6>
+                            <div class="text-small text-muted">Empresas de Logistica de España <div class="bullet"></div> <span class="text-primary">Last Week</span></div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png" alt="avatar">
+                          <div class="media-body">
+                            <div class="badge badge-pill badge-danger mb-1 float-right">Inválido</div>
+                            <h6 class="media-title"><a href="#">ISO 14002 - Caducado</a></h6>
+                            <div class="text-small text-muted">Eletronicos Bilbao Group <div class="bullet"></div> 1 day ago</div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-5.png" alt="avatar">
+                          <div class="media-body">
+                            <div class="badge badge-pill badge-danger mb-1 float-right">Inválido</div>
+                            <h6 class="media-title"><a href="#">ISO 18000 - Caducado</a></h6>
+                            <div class="text-small text-muted">LTHC Eletronics Inc. <div class="bullet"></div> 3 days ago</div>
+                          </div>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Documentos de trabajador por proveedor</h4>
+
+                    </div>
+                    <div class="card-body">
+                      <figure class="highcharts-figure">
+                        <div id="workerColumnsContainer"></div>
+                        <p class="highcharts-description">
+                            
+                        </p>
+                    </figure>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Documentos de proveedores por categoría</h4>
+
+                    </div>
+                    <div class="card-body">
+                      <figure class="highcharts-figure">
+                        <div id="supplierColumnsContainer"></div>
+                        <p class="highcharts-description">
+                            
+                        </p>
+                    </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Últimos documentos publicados del trabajador</h4>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                          <thead>
+                            <tr>
+                              <th>Documento</th>
+                              <th>Trabajador</th>
+                              <th>Estado</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td> DNI </td>
+                              <td>
+                                <a href="#">Gustavo Quiñlones</a>
+                              </td>
+                              <td>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-times-circle"></i></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>  DNI </td>
+                              <td>
+                                <a href="#">Raphael Lopes</a>
+                              </td>
+                              <td>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-times-circle"></i></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td> Pasaporte </td>
+                              <td>
+                                <a href="#">Ruy Gutierrez</a>
+                              </td>
+                              <td>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-times-circle"></i></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 col-6 col-sm-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Últimos documentos publicados del proveedor</h4>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                          <thead>
+                            <tr>
+                              <th>Documento</th>
+                              <th>Proveedor</th>
+                              <th>Estado</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td> ISO 9001 </td>
+                              <td>
+                                <a href="#">Empresas de Logistica de España </a>
+                              </td>
+                              <td>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-times-circle"></i></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td> ISO 14002 </td>
+                              <td>
+                                <a href="#">Eletronicos Bilbao Group</a>
+                              </td>
+                              <td>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-times-circle"></i></a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td> ISO 18000 </td>
+                              <td>
+                                <a href="#">LTHC Eletronics Inc.</a>
+                              </td>
+                              <td>
+                                <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-times-circle"></i></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>SOW's</h4>
+                      <div class="card-header-action">
+                        <a href="#" class="btn btn-info">Ver más </a>
+                      </div>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive table-invoice">
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <th>SOW Reference ID</th>
+                              <th>Nombre</th>                              
+                              <th>Revisión</th>
+                              <th>Código de proveedor</th>
+                              <th>Nombre de proveedor</th>                              
+                              <th>Unidad de negocio</th>
+                              <th>Estado</th>
+                              <th>Comienzo</th>
+                              <th>Fin</th>
+                              
+                            </tr>
+                            <tr>
+                              <td><a href="#">D002TQ00000025</a></td>
+                              <td>Proyecto implantación Fieldglass</td>
+                              <td> 1 </td>
+                              <td>STR1</td>
+                              <td>Proveedor de Servicios ESPAÑA</td>
+                              <td>D002</td>
+                              <td> <div class="badge badge-success">Active</div> </td>
+                              <td>03/02/2021</td>
+                              <td>09/30/2021</td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2019 <div class="bullet"></div> Made by <a href="https://www.stratesys-ts.com">Stratesys</a>
+        </div>
+        <div class="footer-right text-primary font-weight-bold">
+          Stratesys &nbsp;&nbsp; u-Verify &copy;
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/query.nicescroll.min.js"></script>
+  <script src="./assets/js/moment.min.js"></script>
+  <script src="./assets/js/stisla.js"></script>
+
+  <script src="./assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.rowReorder.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.responsive.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/dataTables.buttons.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.print.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.html5.min.js"></script>
+
+  <script src="./assets/plugins/sweetalert2/sweetalert2.all.min.js"> </script>
+
+  <!-- JS Libraies -->
+  <script src="./assets/plugins/jquery.i18n/CLDRPluralRuleParser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.messagestore.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.language.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.parser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+
+  <script src="./assets/plugins/jquery-loading-overlay/loadingoverlay.min.js"></script>
+  <script src="./assets/plugins/pacejs/pace.min.js" data-pace-options='{ "ajax": false }'></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <!-- Template JS File -->
+  <script src="./assets/js/scripts.js"></script>
+
+  <!-- Page Specific JS File -->
+
+  <script src="./controllers/commons.js"></script>
+  <script src="./controllers/index.js"></script>
+  <script src="./controllers/charts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png" />
+  <title>uVerify by Stratesys</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/all.css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="./assets/plugins/datatables/css/dataTables.bootstrap4.min.css">
+  <!-- CSS Libraries -->
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/customStyle.css">
+  <link href="./assets/plugins/sweetalert2/src/sweetalert2.scss">
+</head>
+
+<body class="sidebar-mini">
+  <div id="app">
+    <div class="main-wrapper">
+
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <!-- <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li> -->
+          </ul>
+        </form>
+        <ul class="ml-auto navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <img alt="image" src="./assets/img/avatar/manager.png" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block">Stratesys Innovation</div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-title" data-i18n="header-online-time">Online a 5 minutos</div>
+
+              <div class="dropdown-divider"></div>
+              <a href="./login.html" class="dropdown-item has-icon text-danger" onclick="sair()">
+                <i class="fas fa-sign-out-alt"></i> <span data-i18n="header-exit">Sair</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html">u-Verify</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index.html">UV</a>
+          </div>
+          <div class="mb-4 text-center">
+            <figure class="avatar mr-1 ml-1" style="background: #fff;">
+              <img src="./assets/img/avatar/manager.png" alt="...">
+              <i class="avatar-presence online"></i>
+              <!-- <p class="text-primary font-weight-bold">Stratesys</p> -->
+            </figure>
+          </div>
+
+          <ul class="sidebar-menu text-bold-black" id="menuMain">
+
+          </ul>
+
+          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+
+          </div>
+        </aside>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+
+        <section class="section">
+
+          <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 data-i18n="monitor-header-sub">Monitor de integração - SAP Fieldglass - SAP ECC / S4</h4>
+
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-lg txt-black" id="mainTable">
+                      <thead>
+                        <tr>
+                          <th data-i18n="monitor-tb-master-data">Dados Mestres</th>
+                          <th data-i18n="monitor-tb-status">Status Geral</th>
+                          <th data-i18n="monitor-tb-details">Detalhes</th>
+                          <th data-i18n="monitor-tb-data">Data Atualização</th>
+                          <th data-i18n="monitor-tb-sync">Sincronizar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Cost Center</td>
+                          <td><span class="badge badge-success"><span data-i18n="monitor-tb-sincronizado"></span> <i class="fa fa-check"></i></span></td>
+                          <td data-i18n="monitor-tb-scuesso-sync"></td>
+                          <td>08/10/2020 15:46</td>
+                          <td><a href="#" class="btn btn-info"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Internal Order</td>
+                          <td><span class="badge badge-success"><span data-i18n="monitor-tb-sincronizado"></span> <i class="fa fa-check"></i></span></td>
+                          <td data-i18n="monitor-tb-scuesso-sync"></td>
+                          <td>08/10/2020 13:46</td>
+                          <td><a href="#" class="btn btn-info"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>WBS</td>
+                          <td><span class="badge badge-success"><span data-i18n="monitor-tb-sincronizado"></span> <i class="fa fa-check"></i></span></td>
+                          <td data-i18n="monitor-tb-scuesso-sync"></td>
+                          <td>08/10/2020 14:46</td>
+                          <td><a href="#" class="btn btn-info"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Sales Order</td>
+                          <td><span class="badge badge-secondary"><span data-i18n="monitor-tb-offline"></span> <i class="fa fa-times"></i></span></td>
+                          <td>---</td>
+                          <td>---</td>
+                          <td><a href="#" class="btn btn-secondary"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Company Code</td>
+                          <td><span class="badge badge-secondary"><span data-i18n="monitor-tb-offline"></span> <i class="fa fa-times"></i></span></td>
+                          <td>---</td>
+                          <td>---</td>
+                          <td><a href="#" class="btn btn-secondary"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Purchase Org</td>
+                          <td><span class="badge badge-success"><span data-i18n="monitor-tb-sincronizado"></span> <i class="fa fa-check"></i></span></td>
+                          <td data-i18n="monitor-tb-scuesso-sync"></td>
+                          <td>08/10/2020 09:26</td>
+                          <td><a href="#" class="btn btn-info"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Plant</td>
+                          <td><span class="badge badge-secondary"><span data-i18n="monitor-tb-offline"></span> <i class="fa fa-times"></i></span></td>
+                          <td>---</td>
+                          <td>---</td>
+                          <td><a href="#" class="btn btn-secondary"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>General Ledger</td>
+                          <td><span class="badge badge-secondary"><span data-i18n="monitor-tb-offline"></span> <i class="fa fa-times"></i></span></td>
+                          <td>---</td>
+                          <td>---</td>
+                          <td><a href="#" class="btn btn-secondary"><span data-i18n="monitor-tb-sincronizar"></span> <i class="fa fa-sync"></i></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2019 <div class="bullet"></div> Construido por <a href="https://www.stratesys-ts.com">Stratesys</a>
+        </div>
+        <div class="footer-right text-primary font-weight-bold">
+          Stratesys &nbsp;&nbsp; u-Verify &copy;
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="./assets/js/jquery-3.3.1.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/jquery.nicescroll.min.js"></script>
+  <script src="./assets/js/moment.min.js"></script>
+  <script src="./assets/plugins/tooltip.js/dist/tooltip.js"></script>
+  <script src="./assets/js/stisla.js"></script>
+
+  <!-- JS Libraies -->
+  <script src="./assets/plugins/sweetalert2/sweetalert2.all.min.js"> </script>
+
+  <script src="./assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="./assets/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/dataTables.buttons.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.print.min.js"></script>
+  <script src="./assets/plugins/datatables/exports/Buttons-1.5.4/js/buttons.html5.min.js"></script>
+
+  <script src="./assets/plugins/jquery.i18n/CLDRPluralRuleParser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.messagestore.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.language.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.parser.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.js"></script>
+  <script src="./assets/plugins/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
+
+  <!-- Template JS File -->
+  <script src="./assets/js/scripts.js"></script>
+  <script src="./assets/js/custom.js"></script>
+  <!-- Page Specific JS File -->
+
+  <script src="./controllers/commons.js"></script>
+  <script src="./controllers/monitor_integracao.js"></script>
+  <!-- Page Router JS File -->
+  <!-- <script src="./assets/js/router.js"></script> -->
+</body>
+
+</html>
